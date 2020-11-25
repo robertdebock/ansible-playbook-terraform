@@ -1,0 +1,17 @@
+---
+roles:
+  - name: robertdebock.apt_autostart
+  - name: robertdebock.bootstrap
+  - name: robertdebock.buildtools
+  - name: robertdebock.ca_certificates
+  - name: robertdebock.certbot
+  - name: robertdebock.cron
+  - name: robertdebock.digitalocean_agent
+  - name: robertdebock.epel
+  - name: robertdebock.fail2ban
+  - name: robertdebock.firewall
+  - name: robertdebock.httpd
+  - name: robertdebock.openssl
+  - name: robertdebock.python_pip
+  - name: robertdebock.selinux
+  - name: robertdebock.update

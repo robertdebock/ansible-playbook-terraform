@@ -1,0 +1,18 @@
+---
+httpd_vhosts:
+  - name: "{{ inventory_hostname_short }}"
+    servername: "{{ inventory_hostname }}"
+    documentroot: /var/www/html/{{ inventory_hostname_short }}
+  - name: piratebay
+    servername: piratebay.meinit.nl
+    backend_url: "https://thepirate-bay.org/"
+    proxy_preserve_host: Off
+    proxy_requests: Off
+    setenv:
+      - name: force-proxy-request-1.0
+        value: 1
+      - name: proxy-nokeepalive
+        value: 1
+      - name: proxy-initial-not-pooled
+      - name: proxy-sendchunks
+        value: 1

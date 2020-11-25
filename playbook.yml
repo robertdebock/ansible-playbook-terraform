@@ -1,0 +1,41 @@
+#!/usr/bin/env ansible-playbook
+---
+- name: create machines
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: apply terraform code
+      terraform:
+        project_path: ./terraform
+        state: present
+      register: terraform
+
+    - name: add terraform hosts to inventory
+      add_host:
+        name: "{{ item }}"
+        groups:
+          - backend
+      loop: "{{ terraform.outputs.name.value }}"
+
+- name: provision machines
+  hosts: backend
+  become: yes
+  gather_facts: no
+
+  roles:
+    - role: robertdebock.bootstrap
+    - role: robertdebock.update
+    - role: robertdebock.fail2ban
+    - role: robertdebock.firewall
+    - role: robertdebock.cron
+    - role: robertdebock.apt_autostart
+    - role: robertdebock.ca_certificates
+    - role: robertdebock.digitalocean_agent
+    - role: robertdebock.epel
+    - role: robertdebock.buildtools
+    - role: robertdebock.python_pip
+    - role: robertdebock.openssl
+    - role: robertdebock.selinux
+    - role: robertdebock.httpd
+    - role: robertdebock.certbot

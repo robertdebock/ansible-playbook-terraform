@@ -1,0 +1,5 @@
+roles/*
+!roles/requirements.yml
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform/.terraform

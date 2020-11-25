@@ -1,0 +1,4 @@
+---
+certbot_domains:
+  - "{{ inventory_hostname }}"
+certbot_email: "robert@meinit.nl"
