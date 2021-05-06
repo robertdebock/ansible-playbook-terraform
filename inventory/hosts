@@ -1,0 +1,5 @@
+[development]
+localhost
+
+[production]
+localhost
